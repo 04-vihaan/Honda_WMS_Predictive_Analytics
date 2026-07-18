@@ -1,0 +1,13 @@
+# Data & Models
+data/raw/*.csv
+data/processed/*.csv
+models/*.joblib
+
+# Environments & Secrets
+.env
+__pycache__/
+*.pyc
+
+# OS & Tableau Junk
+.DS_Store
+*.twbr
