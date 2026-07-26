@@ -43,3 +43,7 @@ JOIN
 GROUP BY 
     Supplier_Name, Rejected_Category;
 GO
+
+
+
+

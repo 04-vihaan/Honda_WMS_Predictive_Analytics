@@ -11,20 +11,17 @@ logging.basicConfig(
 )
 
 def train_risk_model(df):
-    """
-    Trains a Random Forest classifier to flag high-risk shipments 
-    using pre-inspection features.
-    """
+   
     logging.info("Starting model training phase...")
     
     try:
-        # Define features and target variable
+        
         features = ['Supplier_Enc', 'Part_Enc', 'Unit_Cost_INR']
         X = df[features]
         y = df['Is_High_Risk']
         
        
-       
+
         X_train, X_test, y_train, y_test = train_test_split(
             X, y, test_size=0.2, random_state=RANDOM_STATE
         )
