@@ -15,13 +15,11 @@ BEGIN
         SUM(Total_Scrap_Cost_INR) AS Total_Financial_Damage_INR,
         CAST(AVG(Rejection_Rate_Pct) AS DECIMAL(5,2)) AS Average_Rejection_Rate,
 
-        SUM(CASE WHEN ML_Risk_Prediction = 1 THEN 1 ELSE 0 END) AS Total_High_Risk_Flags,
-
-        CASE 
-            WHEN SUM(CASE WHEN ML_Risk_Prediction = 1 THEN 1 ELSE 0 END) > 10 THEN 'CRITICAL RISK'
-            WHEN SUM(CASE WHEN ML_Risk_Prediction = 1 THEN 1 ELSE 0 END) BETWEEN 1 AND 10 THEN 'MONITOR'
-            ELSE 'HEALTHY'
-        END AS Supplier_Health_Status
+        SET Health_Status = CASE 
+    WHEN Total_Scrap_Cost > 50000 THEN 'Critical'
+    WHEN Total_Scrap_Cost > 10000 THEN 'Warning'
+    ELSE 'Healthy'
+END
     FROM 
         WMS_Processed_Data
     WHERE 

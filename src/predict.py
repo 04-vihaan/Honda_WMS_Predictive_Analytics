@@ -9,25 +9,22 @@ logging.basicConfig(
 )
 
 def generate_predictions(df):
-    """
-    Loads the trained model, generates risk predictions, 
-    and exports the final dataset for Tableau.
-    """
+
     logging.info("Starting prediction phase...")
     
     try:
-        # 1. Load the trained model from disk
+        # 1. Loading the trained model from computer
         logging.info(f"Loading model from {MODEL_PATH}...")
         model = joblib.load(MODEL_PATH)
         
-        # 2. Define the exact features the model was trained on
+        # 2. Defining the exact features the model was trained on
         features = ['Supplier_Enc', 'Part_Enc', 'Unit_Cost_INR']
         X = df[features]
         
-        # 3. Generate predictions
+        # 3. Generating the predictions
         df['ML_Risk_Prediction'] = model.predict(X)
         
-        # 4. Map the numeric prediction (0 or 1) back to a readable text label for Tableau
+        # 4. Mapping the numeric prediction (0 or 1) back to a readable text label for Tableau
         df['Risk_Label'] = df['ML_Risk_Prediction'].apply(
             lambda x: 'High Risk' if x == 1 else 'Low Risk'
         )

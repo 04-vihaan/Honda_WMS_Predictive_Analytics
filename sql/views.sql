@@ -35,7 +35,7 @@ SELECT
     Total_Defect_Incidents,
     Cumulative_Scrap_Cost,
 
-    (Monthly_Scrap_Cost - ISNULL(Prev_Month_Scrap, 0)) AS Monthly_Cost_Variance
+    (Monthly_Scrap_Cost - Prev_Month_Scrap) AS Monthly_Cost_Variance
 FROM Trend_Calculations;
 GO
 

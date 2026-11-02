@@ -14,10 +14,7 @@ logging.basicConfig(
 )
 
 def run_the_whole_thing():
-    """
-    this function triggers the full ETL + ML prediction pipeline.
-    TODO: add argparser later if manager asks for it.
-    """
+    
     logging.info("!!! starting the master pipeline !!!")
     
     try:

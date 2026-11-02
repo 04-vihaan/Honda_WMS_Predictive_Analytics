@@ -21,10 +21,15 @@ The project demonstrates three main phases:
 - **Visualization:** Tableau
 - **Version Control:** Git
 
+**Note on Data & ML:** To comply with NDAs, no real enterprise data is included. The 100,000-record dataset is entirely synthetic, generated via `Faker` with hardcoded defect weights (e.g., 3 categories hardcoded to represent 84.5% of scrap costs). Because the data lacks genuine physical signals, the predictive ML model possesses no real signal on this data. It makes real predictions, but performs at the baseline majority-class guess (56.1% accuracy on the test set). The purpose of this repo is to demonstrate pipeline architecture, not genuine ML outcomes.
+
 ## Run Order
-To reproduce this pipeline locally:
-1. Run the data generator (or load the provided sample CSV).
+1. `python src/generate_raw_data.py` *(Generates the base 100K synthetic records)*
 2. `python src/extract.py`
 3. `python src/transform.py`
-4. `python src/feature_engineering.py`
-5. `python src/train_model.py` *(Note: Included to demonstrate pipeline architecture only; predictions are simulated)*
+4. `python src/expand_suppliers.py`
+5. `python src/pareto.py`
+6. `python src/feature_engineering.py`
+7. `python src/train_model.py`
+8. `python src/export.py`
+9. Execute SQL scripts (`schema.sql`, `views.sql`, `procedures.sql`)

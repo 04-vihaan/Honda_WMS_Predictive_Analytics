@@ -4,7 +4,7 @@ GO
 USE Honda_WMS_Analytics;
 GO
 
-\CREATE TABLE WMS_Processed_Data (
+CREATE TABLE WMS_Processed_Data (
     PRIS_No VARCHAR(50) PRIMARY KEY,
     Supplier_Name VARCHAR(100),
     Part_Code VARCHAR(50),
