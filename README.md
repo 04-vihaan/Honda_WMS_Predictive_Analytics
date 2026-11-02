@@ -3,9 +3,9 @@
 
 # Honda WMS Predictive Analytics (Portfolio Simulation)
 
-This repository is a **synthetic portfolio simulation** of the ETL and Business Intelligence pipeline I developed during my IT Internship at Honda Cars India Limited. 
+This repository is a **synthetic portfolio simulation** of the ETL and Business Intelligence pipeline I developed during my Data Analyst Internship at Honda Cars India Ltd. 
 
-**Note on Data & ML:** To comply with NDAs, no real enterprise data from Honda's WMS or PRIS databases is included. The 100,000-record dataset is entirely synthetic, generated using `Faker` and `Pandas` with hardcoded defect weights (e.g., 3 categories were hardcoded to represent ~84% of scrap costs to simulate a Pareto distribution). 
+**Note on Data & ML:** To comply with NDAs, no real enterprise data from Honda's WMS or PRIS databases is included. The 100,000 record dataset is entirely synthetic, generated using `Faker` and `Pandas` with hardcoded defect weights (e.g., 3 categories were hardcoded to represent ~84% of scrap costs to simulate a Pareto distribution). 
 
 Because the data lacks genuine physical supply chain signals, the predictive ML model included in this pipeline performs near the baseline majority-class guess (~57% accuracy). The purpose of this repository is to demonstrate the data engineering architecture and Tableau visualization skills, not genuine machine learning outcomes.
 
