@@ -23,7 +23,7 @@ def expand_suppliers():
         suffix = np.random.choice(suffixes)
         unique_suppliers.add(f"{base_name} {suffix}")
     
-    suppliers_list = list(unique_suppliers)
+    suppliers_list = sorted(unique_suppliers)
 
    
 

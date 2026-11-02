@@ -48,22 +48,31 @@ GO
 
 
 CREATE OR ALTER VIEW v_Supplier_Risk_Rankings AS
-WITH Supplier_Metrics AS (
+WITH Supplier_Stats AS (
     SELECT 
-        Supplier_Name,
-        COUNT(PRIS_No) AS Total_Rejections,
-        SUM(Total_Scrap_Cost_INR) AS Total_Financial_Loss,
-
-        SUM(CASE WHEN ML_Risk_Prediction = 1 THEN 1 ELSE 0 END) AS ML_High_Risk_Count
+        Supplier_Name, 
+        COUNT(PRIS_No) AS Total_Defect_Incidents,
+        SUM(Total_Scrap_Cost_INR) AS Total_Scrap_Cost,
+        AVG(Rejection_Rate_Pct) AS Avg_Rejection_Rate
     FROM WMS_Processed_Data
     GROUP BY Supplier_Name
+    HAVING COUNT(PRIS_No) >= 30
+), 
+Ranked_Suppliers AS (
+    SELECT 
+        *, 
+        PERCENT_RANK() OVER (ORDER BY Avg_Rejection_Rate) AS Rate_Pctile 
+    FROM Supplier_Stats
 )
 SELECT 
-    Supplier_Name,
-    Total_rejections,
-    Total_Financial_Loss,
-    ML_High_Risk_Count,
-
-    DENSE_RANK() OVER (ORDER BY Total_Financial_Loss DESC) AS Financial_Risk_Rank
-FROM Supplier_Metrics;
+    Supplier_Name, 
+    Total_Defect_Incidents, 
+    Total_Scrap_Cost,
+    CAST(Avg_Rejection_Rate AS DECIMAL(5,2)) AS Average_Rejection_Rate,
+    CASE 
+        WHEN Rate_Pctile >= 0.90 THEN 'Critical'
+        WHEN Rate_Pctile >= 0.75 THEN 'Warning'
+        ELSE 'Healthy' 
+    END AS Health_Status
+FROM Ranked_Suppliers;
 GO
