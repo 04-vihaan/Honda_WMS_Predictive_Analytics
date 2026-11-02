@@ -3,7 +3,7 @@ import joblib
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
-from src.config import MODEL_PATH, RANDOM_STATE
+from config import MODEL_PATH, RANDOM_STATE
 
 logging.basicConfig(
     level=logging.INFO, 
@@ -52,9 +52,9 @@ def train_risk_model(df):
         raise
 
 if __name__ == "__main__":
-    from src.extract import load_raw_data
-    from src.transform import clean_data
-    from src.feature_engineering import engineer_features
+    from extract import load_raw_data
+    from transform import clean_data
+    from feature_engineering import engineer_features
     
     raw_df = load_raw_data()
     clean_df = clean_data(raw_df)

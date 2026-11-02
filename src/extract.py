@@ -1,6 +1,6 @@
 import pandas as pd
 import logging
-from src.config import RAW_DATA_PATH
+from config import RAW_DATA_PATH
 
 
 logging.basicConfig(

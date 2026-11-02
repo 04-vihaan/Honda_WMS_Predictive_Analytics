@@ -35,7 +35,7 @@ def expand_suppliers():
 
    
     df.to_csv(file_path, index=False)
-    print(f"✅ Success! Dataset now contains exactly {df['Supplier_Name'].nunique()} unique suppliers.")
+    print(f" Success! Dataset now contains exactly {df['Supplier_Name'].nunique()} unique suppliers.")
 
 if __name__ == "__main__":
     expand_suppliers()

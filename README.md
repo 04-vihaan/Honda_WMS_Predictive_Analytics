@@ -21,13 +21,11 @@ The project demonstrates three main phases:
 
 ## Run Order
 To reproduce this pipeline locally:
-1. Base dataset generated outside this repo (load the provided raw CSV).
-2. Execute `sql/schema.sql` *(Creates target tables)*
-3. `python src/extract.py`
-4. `python src/transform.py`
-5. `python src/expand_suppliers.py`
+1. Base dataset generated outside this repo (load the provided 5k-row sample CSV into `data/raw/`).
+2. Execute `sql/schema.sql` *(Creates the target tables in SQL Server)*
+3. `python src/expand_suppliers.py`
+4. `python src/train_model.py` *(Note: Architecture demonstration only)*
+5. `python src/predict.py`
 6. `python src/pareto.py`
-7. `python src/feature_engineering.py`
-8. `python src/train_model.py` *(Note: Architecture demonstration only)*
-9. `python src/export.py` *(Loads into SQL)*
-10. Execute `sql/views.sql` and `sql/procedures.sql`
+7. `python src/export.py` *(Inserts the processed data into the SQL Server schema)*
+8. Execute `sql/views.sql` and `sql/procedures.sql`
