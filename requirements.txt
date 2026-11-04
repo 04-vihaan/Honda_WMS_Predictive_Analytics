@@ -1,3 +1,10 @@
 pandas
 numpy
 scikit-learn
+joblib
+matplotlib
+seaborn
+jupyter
+Faker
+python-dotenv
+pymssql

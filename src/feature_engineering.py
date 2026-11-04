@@ -43,7 +43,7 @@ def engineer_features(df):
 
 
 if __name__ == "__main__":
-    from extract import load_raw_data
+    from src.extract import load_raw_data
     from transform import clean_data
     
    

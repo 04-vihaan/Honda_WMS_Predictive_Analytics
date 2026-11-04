@@ -44,7 +44,7 @@ def clean_data(df):
 
 
 if __name__ == "__main__":
-    from extract import load_raw_data
+    from src.extract import load_raw_data
     
 
     raw_df = load_raw_data()
